@@ -1,7 +1,7 @@
 Vue.component('sockproduct', {
     props: {
         premium: {
-            type: Boolean,
+            type: String,
             required: true,
         }
     },
@@ -23,9 +23,6 @@ Vue.component('sockproduct', {
                 v-bind:style="{'background-color': variant.variantColor}"
                 v-on:mouseover="changeProduct(index)"
                 >
-            </div>
-            <div class="cart">
-                <p>Cart {{ cart }}</p>
             </div>
             <button 
                 v-on:click="addToCart()"
@@ -67,16 +64,14 @@ Vue.component('sockproduct', {
                     }
                 ]
             },
-            cart: 0,
         }
     },
     methods: {
         addToCart() {
-            this.cart += 1;
+            this.$emit('add-to-cart', this.product.variants[this.product.variantIndex].variantId);
         },
         changeProduct(index) {
             this.product.variantIndex = index;
-            console.log(index);
         }
     },
     computed: {
@@ -101,4 +96,12 @@ Vue.component('sockproduct', {
 
 var app = new Vue ({
     el: '#app',
+    data: {
+        cart: [],
+    },
+    methods: {
+        updateCart(id) {
+            this.cart.push(id);
+        }
+    },
 })

@@ -9,8 +9,10 @@
         <div class="nav-bar"></div>
 
         <div id='app'>
-            <sockproduct premium=false></sockproduct>
+            <div class="cart">Cart {{  cart.length }}</div>
+            <sockproduct premium=true v-on:add-to-cart="updateCart"></sockproduct>
         </div>
+
         
         <script src="https://unpkg.com/vue"></script>
         <script src="Vuefile.js"></script>
