@@ -9,35 +9,7 @@
         <div class="nav-bar"></div>
 
         <div id='app'>
-            <div class="product">
-                <div class="product-image">
-                    <img v-bind:src="imagePath" v-bind:title="imageDescription" alt="sokken_plaatje">
-                </div>
-                <div class="product-info">
-                    <h1>{{ product.name }}</h1>
-                    <p>{{ description }}</p>
-                    <ul>
-                        <li v-for="detail in product.details">{{ detail }}</li>
-                    </ul>
-                    <div 
-                        class="color-box"
-                        v-for="(variant, index) in product.variants" 
-                        v-bind:key="variant.variantId"
-                        v-bind:style="{'background-color': variant.variantColor}"
-                        v-on:mouseover="changeProduct(index)"
-                        >
-                    </div>
-                    <div class="cart">
-                        <p>Cart {{ cart }}</p>
-                    </div>
-                    <button 
-                        v-on:click="addToCart()"
-                        :class="{ disabledButton: !product.inStock }"
-                        v-bind:disabled="!product.inStock">
-                        Add to cart
-                    </button>
-                </div>
-            </div>
+            <sockproduct premium=false></sockproduct>
         </div>
         
         <script src="https://unpkg.com/vue"></script>
