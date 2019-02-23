@@ -3,12 +3,12 @@ var app = new Vue ({
     data: {
         product: {
             name: 'Socks',
-            description: 'A pair of warm, fuzzy ' + this,
+            description: 'A pair of warm, fuzzy ',
             inStock: true,
             image: {
-                path: './assets/vmSocks-green-onWhite.jpg',
                 description: 'Green socks',
             },
+            variantIndex: 0,
             details: ['80% katoen', '20% polyester', 'Gender neutral'],
             variants: [
                 {
@@ -37,9 +37,20 @@ var app = new Vue ({
         addToCart() {
             this.cart += 1;
         },
-        changeProduct(newImage) {
-            this.product.image = newImage.image;
-            this.product.inStock = newImage.inStock;
+        changeProduct(index) {
+            this.product.variantIndex = index;
+            console.log(index);
+        }
+    },
+    computed: {
+        description() {
+            return this.product.description + this.product.name;
+        },
+        imagePath() {
+            return this.product.variants[this.product.variantIndex].image.path;
+        },
+        imageDescription() {
+            return this.product.variants[this.product.variantIndex].image.description;
         }
     }
 })
