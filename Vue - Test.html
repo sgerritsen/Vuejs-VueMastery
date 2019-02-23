@@ -14,8 +14,10 @@
                     <img v-bind:src="product.image.path" v-bind:title="product.image.description" alt="sokken_plaatje">
                 </div>
                 <div class="product-info">
-                        <h1>{{ product.name }}</h1>
-                        <p>{{ product.description }}</p>
+                    <h1>{{ product.name }}</h1>
+                    <p>{{ product.description }}</p>
+                    <p v-if="product.inStock">In Stock</p>
+                    <p v-else>Out of Stock</p>
                 </div>
             </div>
         </div>

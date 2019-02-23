@@ -8,6 +8,7 @@ var app = new Vue ({
                 path: './assets/vmSocks-green-onWhite.jpg',
                 description: 'Green socks',
             },
+            inStock: true,
         }
     }
 })
